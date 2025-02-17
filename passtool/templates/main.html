@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% if 'status' in data %}
+  {{ data.current_user}}
+  {% if data.status %}
+    <p style="color: green;">Success!</p>
+  {%else%}
+    <p style="color: red;">{{ status }}</p>
+
+    [<a href="{{ url_for('views.home_path')}}">Back</a>]
+  {%endif%}
+{%else%}
+<div class="container text-begin">
+{{ data.current_user}}
+<form onsubmit="return validatePassword()" method="POST">
+<div class="row">
+    <div class="col-2"><label for="current_password">Current Password:</label></div>
+    <div class="col-2"><input type="password" id="current_password" name="current_password" required ></div>
+</div>
+<div class="row">
+    <div class="col-2"><label for="password">Password:</label></div>
+    <div class="col-2"><input type="password" id="password" name="password" required minlength="4"></div>
+</div>
+<div class="row">
+    <div class="col-2"><label for="confirm_password">Confirm Password:</label></div>
+    <div class="col-2"><input type="password" id="confirm_password" name="confirm_password" required></div>
+</div>
+<button type="submit">Submit</button>
+</form>
+
+<p id="error-message" style="color: red;"></p>
+{%endif%}
+
+
+</div>
+  <script>
+    function validatePassword() {
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm_password").value;
+      const errorMessage = document.getElementById("error-message");
+
+      if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match!";
+        return false; // Prevent form submission
+      }
+      errorMessage.textContent = ""; // Clear error message
+      return true; // Allow form submission
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+oauth:
+  sso:
+    issuer: "https://keycloak.example.com"
+    client_id: "passtool"
+    client_secret: "<KEYCLOAK_CLIENT_KEY>"
+
+
+default_theme: "darkly"
+
+secret_key: "1234567890ABCDEF"
+ipa_server: "ipaserver.example.com"
+
+
+smtp:
+  enabled: False
+  port: 25
+  server: "smtp.example.com"
+  domain: "example.com"
+  from: "passtool@example.com"

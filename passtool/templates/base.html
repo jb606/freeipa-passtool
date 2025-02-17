@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+    {{ bootstrap.load_css() }}
+
+    {% endblock %}
+    {% endblock %}
+    {% block title %}<title>Passtool</title>{%endblock%}
+</head>
+<body>
+
+{% block content %}
+
+
+Hello World
+
+
+{% endblock %}
+
+<script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+{{ bootstrap.load_js() }}
+</body>
+</html>
